@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+app.use("/api-docs", swaggerUI.serveFiles, swaggerUI.setup(swaggerSpec));
 
 app.use(async (req, res, next) => {
   try {
