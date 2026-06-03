@@ -19,10 +19,17 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/api-docs.json", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.send(swaggerSpec);
+});
+
 app.use(
   "/api-docs",
-  swaggerUI.serveFiles(swaggerSpec),
-  swaggerUI.setup(swaggerSpec),
+  swaggerUI.serve,
+  swaggerUI.setup(null, {
+    swaggerUrl: "/api-docs.json",
+  }),
 );
 
 app.use(async (req, res, next) => {
