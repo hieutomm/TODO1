@@ -19,10 +19,6 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/api-docs", (req, res) => {
-  res.redirect("/api-docs/");
-});
-
 app.use(
   "/api-docs",
   swaggerUI.serveFiles(swaggerSpec),
