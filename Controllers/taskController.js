@@ -18,7 +18,7 @@ const addTask = async (req, res) => {
 };
 const updateTask = async (req, res) => {
   try {
-    const task = Todo.findOneAndUpdate(
+    const task = await Todo.findOneAndUpdate(
       {
         _id: req.params.id,
         user: req.user.id,
@@ -40,7 +40,9 @@ const updateTask = async (req, res) => {
 const getTask = async (req, res) => {
   try {
     const done = req.query.done;
-    let filter = {};
+    let filter = {
+      user: req.user.id,
+    };
     if (done === "true") {
       filter.done = true;
     }

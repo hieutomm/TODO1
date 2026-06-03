@@ -65,7 +65,7 @@ router.post("/", auth, addTask);
  *       500:
  *         description: Server error
  */
-router.put("/", updateTask);
+router.put("/:id", auth, updateTask);
 /**
  * @swagger
  * /tasks/{id}:
@@ -89,7 +89,7 @@ router.put("/", updateTask);
  *       500:
  *         description: Server error
  */
-router.delete("/", deleteTask);
+router.delete("/:id", auth, deleteTask);
 /**
  * @swagger
  * /tasks:
@@ -102,6 +102,6 @@ router.delete("/", deleteTask);
  *       200:
  *         description: Thành công
  */
-router.get("/", getTask);
+router.get("/", auth, getTask);
 
 module.exports = router;
